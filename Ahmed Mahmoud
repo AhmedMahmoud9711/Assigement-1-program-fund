@@ -2,22 +2,27 @@ class Customer:
     """Represents a customer who places orders in the system."""
 
     def __init__(self, name, email, phone, address):
-        self.__name = name
-        self.__email = email
-        self.__phone = phone
-        self.__address = address
+        """Initialize customer details."""
+        self.__name = name  # Customer's name
+        self.__email = email  # Customer's email
+        self.__phone = phone  # Customer's phone number
+        self.__address = address  # Customer's delivery address
 
-    # Getter and Setter Methods
+    # Getter and Setter Methods (To access private attributes)
     def get_name(self):
+        """Returns the customer's name."""
         return self.__name
 
     def set_name(self, name):
+        """Updates the customer's name."""
         self.__name = name
 
     def get_email(self):
+        """Returns the customer's email."""
         return self.__email
 
     def set_email(self, email):
+        """Updates the customer's email."""
         self.__email = email
 
     def place_order(self, order):
@@ -25,7 +30,7 @@ class Customer:
         pass  # This function will process an order placement
 
     def get_details(self):
-        """Returns customer details."""
+        """Returns customer details in string format."""
         return f"Customer: {self.__name}, Email: {self.__email}, Phone: {self.__phone}"
     
 
@@ -33,14 +38,15 @@ class Order:
     """Represents a customer's order containing multiple items."""
 
     def __init__(self, order_id, customer, items, total_price):
-        self.__order_id = order_id
-        self.__customer = customer
+        """Initialize order details."""
+        self.__order_id = order_id  # Unique order ID
+        self.__customer = customer  # Customer who placed the order
         self.__items = items  # List of Item objects
-        self.__total_price = total_price
+        self.__total_price = total_price  # Total price of the order
 
     def calculate_total(self):
         """Calculates the total price of all items in the order."""
-        pass  # This function should iterate through items and sum their prices
+        pass  # This function will sum up the price of all items
 
     def generate_delivery_note(self):
         """Generates a delivery note for the order."""
@@ -51,17 +57,18 @@ class Item:
     """Represents an individual product in an order."""
 
     def __init__(self, item_id, description, price, quantity):
-        self.__item_id = item_id
-        self.__description = description
-        self.__price = price
-        self.__quantity = quantity
+        """Initialize item details."""
+        self.__item_id = item_id  # Unique item ID
+        self.__description = description  # Description of the item
+        self.__price = price  # Price per unit
+        self.__quantity = quantity  # Quantity of the item ordered
 
     def calculate_item_total(self):
-        """Calculates the total price for this item."""
+        """Calculates the total price for this item (price * quantity)."""
         return self.__price * self.__quantity
 
     def get_item_details(self):
-        """Returns item details."""
+        """Returns item details as a formatted string."""
         return f"Item: {self.__description}, Quantity: {self.__quantity}, Total: {self.calculate_item_total()}"
 
 
@@ -69,13 +76,14 @@ class DeliveryNote:
     """Represents a delivery receipt for an order."""
 
     def __init__(self, note_id, order, delivery_address):
-        self.__note_id = note_id
-        self.__order = order
-        self.__delivery_address = delivery_address
+        """Initialize delivery note details."""
+        self.__note_id = note_id  # Unique note ID
+        self.__order = order  # The order associated with this delivery note
+        self.__delivery_address = delivery_address  # Delivery address for the order
 
     def generate_note(self):
-        """Creates a formatted delivery note."""
-        pass  # This function will return a string with order and delivery details
+        """Creates a formatted delivery note with order details."""
+        pass  # This function will generate and return a delivery note
 
     def print_note(self):
         """Prints the delivery note."""
@@ -86,16 +94,17 @@ class DeliveryStaff:
     """Represents a delivery person responsible for handling deliveries."""
 
     def __init__(self, staff_id, name, phone):
-        self.__staff_id = staff_id
-        self.__name = name
-        self.__phone = phone
+        """Initialize delivery staff details."""
+        self.__staff_id = staff_id  # Unique ID for the delivery staff
+        self.__name = name  # Name of the delivery staff
+        self.__phone = phone  # Contact number of the delivery staff
 
     def update_order_status(self, order_id, status):
-        """Updates the status of a given order."""
-        pass  # This function will update the order status in the system
+        """Updates the status of a given order (e.g., delivered, in transit)."""
+        pass  # This function will update order status in the system
 
     def confirm_delivery(self, order_id):
-        """Marks an order as delivered."""
+        """Marks an order as delivered in the system."""
         pass  # This function will confirm delivery and update records
 
 
@@ -103,13 +112,14 @@ class Admin:
     """Represents an administrator managing users and orders."""
 
     def __init__(self, admin_id, name):
-        self.__admin_id = admin_id
-        self.__name = name
+        """Initialize admin details."""
+        self.__admin_id = admin_id  # Unique ID for the admin
+        self.__name = name  # Name of the admin
 
     def manage_users(self):
         """Handles the addition, modification, or deletion of users."""
-        pass  # This function will handle user management
+        pass  # This function will manage customer and staff accounts
 
     def manage_orders(self):
-        """Manages orders, such as viewing and updating them."""
-        pass  # This function will allow admin to manage orders
+        """Manages orders, such as viewing, updating, or deleting them."""
+        pass  # This function will allow the admin to manage orders
