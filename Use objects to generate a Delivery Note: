@@ -1,0 +1,84 @@
+# Creating a customer object with name, email, phone number, and address
+customer1 = Customer("Ahmed Mahmoud", "Ahmed.Mahmoud@gmail.com", "0500235477", "Alquoz 1, Dubai, UAE")
+
+
+# Creating item objects with item ID, description, price per unit, and quantity
+item1 = Item("ASM001", "Keyboard", 100.00, 1)
+item2 = Item("ASM002", "Wireless Mouse & MousePad", 75.00, 1)
+item3 = Item("ASM003", "Laptop", 1200.00, 1)
+item4 = Item("ASM004", "Camera protector", 15.00, 3)
+
+
+# Creating a list of items included in the order
+items_list = [item1, item2, item3, item4]
+
+
+# Creating an order object with order ID, customer object, list of items, and total price
+order1 = Order("QWE123456789", customer1, items_list, 1433.5)
+
+
+# Creating a delivery note object with reference number, order object, and delivery address
+delivery_note1 = DeliveryNote("DN-2025-128", order1, "Alquoz 1, Dubai, UAE")
+
+
+# Creating a delivery staff object with staff ID, name, and phone number
+delivery_staff1 = DeliveryStaff("4487", "Mohammed Ali", "0509122244")
+
+
+# Creating an admin object with admin ID and name
+admin1 = Admin("ADN007", "Khalifa")
+
+
+
+
+# Function to display the delivery note details
+def display_delivery_note():
+    """Prints a formatted delivery note with recipient details, order details, and item summary."""
+
+
+    # Printing header for delivery note
+    print("\nDelivery Note")
+
+
+    # Printing recipient details (Customer Information)
+    print("Recipient Details:")
+    print("Name:", customer1.get_name())  # Fetching customer's name
+    print("Contact:", customer1.get_email())  # Fetching customer's email
+    print("Delivery Address:", delivery_note1._DeliveryNote__delivery_address)  # Fetching delivery address
+    print()
+
+
+    # Printing delivery information (Order Details)
+    print("Delivery Information:")
+    print("Order Number:", order1._Order__order_id)  # Fetching order number
+    print("Reference Number:", delivery_note1._DeliveryNote__note_id)  # Fetching reference number
+    print("Delivery Method: Courier")  # Static delivery method
+    print("Total Weight: 7 kg")  # Static total weight (Can be modified based on items)
+    print()
+
+
+    # Printing item summary header
+    print("Summary of Items Delivered:")
+    print("Item Code  Description                      Quantity  Unit Price (AED)  Total Price (AED)")
+
+
+    # Looping through all items in the order and printing their details
+    for item in items_list:
+        print(item._Item__item_id, " ", item._Item__description.ljust(30), item._Item__quantity, "     ",
+              format(item._Item__price, ".2f"), "         ", format(item.calculate_item_total(), ".2f"))
+
+
+    # Printing subtotal, taxes, and final total charges
+    print("\nSubtotal: AED 1418")  # Static subtotal (Should be dynamically calculated)
+    print("Taxes and Fees: AED 13.50")  # Static tax and fees (Can be updated)
+
+
+    # Printing final total charge
+    print("Total Charges: AED", order1._Order__total_price)  # Fetching total price from order
+
+
+
+
+# Call the function to display the delivery note
+display_delivery_note()
+
